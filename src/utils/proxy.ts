@@ -57,12 +57,7 @@ export async function specificProxyRequest(
 
   const method = opts.fetchOptions?.method || event.method;
   const oldHeaders = getProxyRequestHeaders(event);
-  opts.blacklistedHeaders?.forEach((header) => {
-    const keys = Object.keys(oldHeaders).filter(
-      (v) => v.toLowerCase() === header.toLowerCase(),
-    );
-    keys.forEach((k) => delete oldHeaders[k]);
-  });
+ 
 
   const fetchHeaders = mergeHeaders(
     oldHeaders,
